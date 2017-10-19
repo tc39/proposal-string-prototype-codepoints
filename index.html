@@ -1,5 +1,5 @@
 <!doctype html>
-<head><meta charset="utf-8"><title>String.prototype.codePoints</title><script type="application/json" id="menu-search-biblio">[{"type":"clause","id":"sec-string.prototype-codepoints","aoid":null,"title":"String.prototype.codePoints ( )","titleHTML":"String.prototype.codePoints ( )","number":"1","namespace":"<no location>","location":"","referencingIds":[],"key":"String.prototype.codePoints ( )"},{"type":"op","aoid":"CreateStringIterator","refId":"sec-createstringiterator","location":"","referencingIds":[],"key":"CreateStringIterator"},{"type":"clause","id":"sec-createstringiterator","aoid":"CreateStringIterator","title":"CreateStringIterator ( string,  kind )","titleHTML":"CreateStringIterator ( <var>string</var>,  <ins><var>kind</var></ins> )","number":"2","namespace":"<no location>","location":"","referencingIds":["_ref_4"],"key":"CreateStringIterator ( string,  kind )"},{"type":"clause","id":"sec-%stringiteratorprototype%.next","aoid":null,"title":"%StringIteratorPrototype%.next ( )","titleHTML":"%StringIteratorPrototype%.next ( )","number":"3","namespace":"<no location>","location":"","referencingIds":[],"key":"%StringIteratorPrototype%.next ( )"},{"type":"table","id":"table-46","number":1,"caption":"Table 1: Internal Slots of String Iterator Instances","referencingIds":["_ref_1"],"namespace":"<no location>","location":"","key":"Table 1: Internal Slots of String Iterator Instances"},{"type":"clause","id":"sec-properties-of-string-iterator-instances","aoid":null,"title":"Properties of String Iterator Instances","titleHTML":"Properties of String Iterator Instances","number":"4","namespace":"<no location>","location":"","referencingIds":["_ref_0"],"key":"Properties of String Iterator Instances"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>"use strict";
+<head><meta charset="utf-8"><title>String.prototype.codePoints</title><script type="application/json" id="menu-search-biblio">[{"type":"clause","id":"sec-string.prototype-@@iterator","aoid":null,"title":"String.prototype [ @@iterator ] ( )","titleHTML":"String.prototype [ @@iterator ] ( )","number":"1.1","namespace":"<no location>","location":"","referencingIds":[],"key":"String.prototype [ @@iterator ] ( )"},{"type":"clause","id":"sec-string.prototype-codepoints","aoid":null,"title":"String.prototype.codePoints ( )","titleHTML":"String.prototype.codePoints ( )","number":"1.2","namespace":"<no location>","location":"","referencingIds":[],"key":"String.prototype.codePoints ( )"},{"type":"clause","id":"sec-properties-of-the-string-prototype-object","aoid":null,"title":"Properties of the String Prototype Object","titleHTML":"Properties of the String Prototype Object","number":"1","namespace":"<no location>","location":"","referencingIds":[],"key":"Properties of the String Prototype Object"},{"type":"op","aoid":"CreateStringIterator","refId":"sec-createstringiterator","location":"","referencingIds":[],"key":"CreateStringIterator"},{"type":"clause","id":"sec-createstringiterator","aoid":"CreateStringIterator","title":"CreateStringIterator ( string,  kind )","titleHTML":"CreateStringIterator ( <var>string</var>,  <ins><var>kind</var></ins> )","number":"2.1","namespace":"<no location>","location":"","referencingIds":["_ref_4","_ref_7"],"key":"CreateStringIterator ( string,  kind )"},{"type":"clause","id":"sec-%stringiteratorprototype%.next","aoid":null,"title":"%StringIteratorPrototype%.next ( )","titleHTML":"%StringIteratorPrototype%.next ( )","number":"2.2.1","namespace":"<no location>","location":"","referencingIds":[],"key":"%StringIteratorPrototype%.next ( )"},{"type":"clause","id":"sec-%stringiteratorprototype%-object","aoid":null,"title":"The %StringIteratorPrototype% Object","titleHTML":"The %StringIteratorPrototype% Object","number":"2.2","namespace":"<no location>","location":"","referencingIds":["_ref_10","_ref_17"],"key":"The %StringIteratorPrototype% Object"},{"type":"table","id":"table-46","number":1,"caption":"Table 1: Internal Slots of String Iterator Instances","referencingIds":["_ref_1"],"namespace":"<no location>","location":"","key":"Table 1: Internal Slots of String Iterator Instances"},{"type":"clause","id":"sec-properties-of-string-iterator-instances","aoid":null,"title":"Properties of String Iterator Instances","titleHTML":"Properties of String Iterator Instances","number":"2.3","namespace":"<no location>","location":"","referencingIds":["_ref_0"],"key":"Properties of String Iterator Instances"},{"type":"clause","id":"sec-string-iterator-objects","aoid":null,"title":"String Iterator Objects","titleHTML":"String Iterator Objects","number":"2","namespace":"<no location>","location":"","referencingIds":[],"key":"String Iterator Objects"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>"use strict";
 
 function Search(menu) {
   this.menu = menu;
@@ -1788,77 +1788,105 @@ li.menu-search-result-term:before {
   text-align: right;
   padding-right: 5px;
 }
-</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-string.prototype-codepoints" title="String.prototype.codePoints ( )"><span class="secnum">1</span> String.prototype.codePoints ( )</a></li><li><span class="item-toggle-none"></span><a href="#sec-createstringiterator" title="CreateStringIterator ( string,  kind )"><span class="secnum">2</span> CreateStringIterator ( <var>string</var>,  <ins><var>kind</var></ins> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-%stringiteratorprototype%.next" title="%StringIteratorPrototype%.next ( )"><span class="secnum">3</span> %StringIteratorPrototype%.next ( )</a></li><li><span class="item-toggle-none"></span><a href="#sec-properties-of-string-iterator-instances" title="Properties of String Iterator Instances"><span class="secnum">4</span> Properties of String Iterator Instances</a></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage 0 Draft / October 19, 2017</h1><h1 class="title">String.prototype.codePoints</h1>
+</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle">◢</span><a href="#sec-properties-of-the-string-prototype-object" title="Properties of the String Prototype Object"><span class="secnum">1</span> Properties of the String Prototype Object</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-string.prototype-@@iterator" title="String.prototype [ @@iterator ] ( )"><span class="secnum">1.1</span> String.prototype [ @@iterator ] ( )</a></li><li><span class="item-toggle-none"></span><a href="#sec-string.prototype-codepoints" title="String.prototype.codePoints ( )"><span class="secnum">1.2</span> String.prototype.codePoints ( )</a></li></ol></li><li><span class="item-toggle">◢</span><a href="#sec-string-iterator-objects" title="String Iterator Objects"><span class="secnum">2</span> String Iterator Objects</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-createstringiterator" title="CreateStringIterator ( string,  kind )"><span class="secnum">2.1</span> CreateStringIterator ( <var>string</var>,  <ins><var>kind</var></ins> )</a></li><li><span class="item-toggle">◢</span><a href="#sec-%stringiteratorprototype%-object" title="The %StringIteratorPrototype% Object"><span class="secnum">2.2</span> The %StringIteratorPrototype% Object</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-%stringiteratorprototype%.next" title="%StringIteratorPrototype%.next ( )"><span class="secnum">2.2.1</span> %StringIteratorPrototype%.next ( )</a></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-properties-of-string-iterator-instances" title="Properties of String Iterator Instances"><span class="secnum">2.3</span> Properties of String Iterator Instances</a></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage 0 Draft / October 19, 2017</h1><h1 class="title">String.prototype.codePoints</h1>
 
-<ins class="block">
-<emu-clause id="sec-string.prototype-codepoints">
-		<h1><span class="secnum">1</span>String.prototype.codePoints ( )</h1>
-		<p>When the <code>codePoints</code> method is called it returns an Iterator object (<emu-xref href="#sec-iterator-interface"><a href="https://tc39.github.io/ecma262/#sec-iterator-interface">25.1.1.2</a></emu-xref>) that iterates over the code points of a String value, returning each code point as a Number value. The following steps are taken:</p>
-		<emu-alg><ol><li>Let <var>O</var> be ?&nbsp;<emu-xref aoid="RequireObjectCoercible" id="_ref_2"><a href="https://tc39.github.io/ecma262/#sec-requireobjectcoercible">RequireObjectCoercible</a></emu-xref>(<emu-val>this</emu-val> value).</li><li>Let <var>S</var> be ?&nbsp;<emu-xref aoid="ToString" id="_ref_3"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>O</var>).</li><li>Return <emu-xref aoid="CreateStringIterator" id="_ref_4"><a href="#sec-createstringiterator">CreateStringIterator</a></emu-xref>(<var>S</var>, <ins>"codepoint"</ins>).
+<!-- es6num="21.1.3" -->
+<emu-clause id="sec-properties-of-the-string-prototype-object">
+	<h1><span class="secnum">1</span>Properties of the String Prototype Object</h1>
+
+	<!-- es6num="21.1.3.27" -->
+	<emu-clause id="sec-string.prototype-@@iterator">
+		<h1><span class="secnum">1.1</span>String.prototype [ @@iterator ] ( )</h1>
+		<p>When the @@iterator method is called it returns an Iterator object (<emu-xref href="#sec-iterator-interface"><a href="https://tc39.github.io/ecma262/#sec-iterator-interface">25.1.1.2</a></emu-xref>) that iterates over the code points of a String value, returning each code point as a String value. The following steps are taken:</p>
+		<emu-alg><ol><li>Let <var>O</var> be ?&nbsp;<emu-xref aoid="RequireObjectCoercible" id="_ref_2"><a href="https://tc39.github.io/ecma262/#sec-requireobjectcoercible">RequireObjectCoercible</a></emu-xref>(<emu-val>this</emu-val> value).</li><li>Let <var>S</var> be ?&nbsp;<emu-xref aoid="ToString" id="_ref_3"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>O</var>).</li><li>Return <emu-xref aoid="CreateStringIterator" id="_ref_4"><a href="#sec-createstringiterator">CreateStringIterator</a></emu-xref>(<var>S</var>, <ins><code>"char"</code></ins>).
 		</li></ol></emu-alg>
-</emu-clause>
-</ins>
+		<p>The value of the <code>name</code> property of this function is <code>"[Symbol.iterator]"</code>.</p>
+	</emu-clause>
 
-<emu-clause id="sec-createstringiterator" aoid="CreateStringIterator">
-	<h1><span class="secnum">2</span>CreateStringIterator ( <var>string</var>,  <ins><var>kind</var></ins> )</h1>
-	<p>Several methods of String objects return Iterator objects. The abstract operation CreateStringIterator with argument <var>string</var> is used to create such iterator objects. It performs the following steps:</p>
-	<emu-alg><ol><li>Assert: <emu-xref aoid="Type" id="_ref_5"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>string</var>) is String.</li><li>Let <var>iterator</var> be <emu-xref aoid="ObjectCreate" id="_ref_6"><a href="https://tc39.github.io/ecma262/#sec-objectcreate">ObjectCreate</a></emu-xref>(<emu-xref href="#sec-%stringiteratorprototype%-object"><a href="https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%-object">%StringIteratorPrototype%</a></emu-xref>, « [[IteratedString]], [[StringIteratorNextIndex]] »).</li><li>Set <var>iterator</var>.[[IteratedString]] to <var>string</var>.</li><li>Set <var>iterator</var>.[[StringIteratorNextIndex]] to 0.</li><li><ins>Set <var>iterator</var>.[[StringIterationKind]] to <var>kind</var>.</ins></li><li>Return <var>iterator</var>.
-	</li></ol></emu-alg>
-</emu-clause>
-
-<emu-clause id="sec-%stringiteratorprototype%.next">
-	<h1><span class="secnum">3</span>%StringIteratorPrototype%.next ( )</h1>
-	<emu-alg><ol><li>Let <var>O</var> be the <emu-val>this</emu-val> value.</li><li>If <emu-xref aoid="Type" id="_ref_7"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>O</var>) is not Object, throw a <emu-val>TypeError</emu-val> exception.</li><li>If <var>O</var> does not have all of the internal slots of a String Iterator Instance (<emu-xref href="#sec-properties-of-string-iterator-instances" id="_ref_0"><a href="#sec-properties-of-string-iterator-instances">4</a></emu-xref>), throw a <emu-val>TypeError</emu-val> exception.</li><li>Let <var>s</var> be <var>O</var>.[[IteratedString]].</li><li>If <var>s</var> is <emu-val>undefined</emu-val>, return <emu-xref aoid="CreateIterResultObject" id="_ref_8"><a href="https://tc39.github.io/ecma262/#sec-createiterresultobject">CreateIterResultObject</a></emu-xref>(<emu-val>undefined</emu-val>, <emu-val>true</emu-val>).</li><li>Let <var>position</var> be <var>O</var>.[[StringIteratorNextIndex]].</li><li>Let <var>len</var> be the length of <var>s</var>.</li><li>If <var>position</var> ≥ <var>len</var>, then<ol><li>Set <var>O</var>.[[IteratedString]] to <emu-val>undefined</emu-val>.</li><li>Return <emu-xref aoid="CreateIterResultObject" id="_ref_9"><a href="https://tc39.github.io/ecma262/#sec-createiterresultobject">CreateIterResultObject</a></emu-xref>(<emu-val>undefined</emu-val>, <emu-val>true</emu-val>).</li></ol></li><li>Let <var>first</var> be the numeric value of the code unit at index <var>position</var> within <var>s</var>.</li><li><ins>Let <var>resultSize</var> be 1.</ins></li><li><del>If <var>first</var> &lt; 0xD800 or <var>first</var> &gt; 0xDBFF or <var>position</var>+1 = <var>len</var>, let <var>resultString</var> be the String value consisting of the single code unit <var>first</var>.</del></li><li><ins>If <var>first</var> &lt; 0xD800 or <var>first</var> &gt; 0xDBFF or <var>position</var>+1 = <var>len</var>, let <var>resultCp</var> be <var>first</var>.</ins></li><li>Else,<ol><li>Let <var>second</var> be the numeric value of the code unit at index <var>position</var>+1 within the String <var>S</var>.</li><li><del>If <var>second</var> &lt; 0xDC00 or <var>second</var> &gt; 0xDFFF, let <var>resultString</var> be the String value consisting of the single code unit <var>first</var>.</del></li><li><ins>If <var>second</var> &lt; 0xDC00 or <var>second</var> &gt; 0xDFFF, let <var>resultCp</var> be <var>first</var>.</ins></li><li><del>Else, let <var>resultString</var> be the string-concatenation of the code unit <var>first</var> and the code unit <var>second</var>.</del></li><li><ins>Else, let <var>resultCp</var> be <emu-xref aoid="UTF16Decode" id="_ref_10"><a href="https://tc39.github.io/ecma262/#sec-utf16decode">UTF16Decode</a></emu-xref>(<var>first</var>, <var>second</var>) and let <var>resultSize</var> be 2.</ins></li></ol></li><li><del>Let <var>resultSize</var> be the number of code units in <var>resultString</var>.</del></li><li>Set <var>O</var>.[[StringIteratorNextIndex]] to <var>position</var> + <var>resultSize</var>.</li><li><ins>Let <var>itemKind</var> be <var>O</var>.[[StringIterationKind]].</ins></li><li><ins>If <var>itemKind</var> is <code>"char"</code>, let <var>result</var> be <var>resultCp</var>.</ins></li><li><ins>Else,</ins><ol><li><ins>Assert: <var>itemKind</var> is <code>"codepoint"</code>.</ins></li><li><ins>Let <var>result</var> be the String value consisting of the <emu-xref aoid="UTF16Encoding" id="_ref_11"><a href="https://tc39.github.io/ecma262/#sec-utf16encoding">UTF16Encoding</a></emu-xref> of <var>resultCp</var>.</ins></li></ol></li><li><ins>Return <emu-xref aoid="CreateIterResultObject" id="_ref_12"><a href="https://tc39.github.io/ecma262/#sec-createiterresultobject">CreateIterResultObject</a></emu-xref>(<del><var>resultString</var></del><ins><var>result</var></ins>, <emu-val>false</emu-val>).</ins>
-	</li></ol></emu-alg>
+	<ins class="block">
+	<!-- es6num="21.1.3.28" -->
+	<emu-clause id="sec-string.prototype-codepoints">
+			<h1><span class="secnum">1.2</span>String.prototype.codePoints ( )</h1>
+			<p>When the <code>codePoints</code> method is called it returns an Iterator object (<emu-xref href="#sec-iterator-interface"><a href="https://tc39.github.io/ecma262/#sec-iterator-interface">25.1.1.2</a></emu-xref>) that iterates over the code points of a String value, returning each code point as a Number value. The following steps are taken:</p>
+			<emu-alg><ol><li>Let <var>O</var> be ?&nbsp;<emu-xref aoid="RequireObjectCoercible" id="_ref_5"><a href="https://tc39.github.io/ecma262/#sec-requireobjectcoercible">RequireObjectCoercible</a></emu-xref>(<emu-val>this</emu-val> value).</li><li>Let <var>S</var> be ?&nbsp;<emu-xref aoid="ToString" id="_ref_6"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>O</var>).</li><li>Return <emu-xref aoid="CreateStringIterator" id="_ref_7"><a href="#sec-createstringiterator">CreateStringIterator</a></emu-xref>(<var>S</var>, <ins><code>"codepoint"</code></ins>).
+			</li></ol></emu-alg>
+	</emu-clause>
+	</ins>
 </emu-clause>
 
-<emu-clause id="sec-properties-of-string-iterator-instances">
-	<h1><span class="secnum">4</span>Properties of String Iterator Instances</h1>
-	<p>String Iterator instances are ordinary objects that inherit properties from the <emu-xref href="#sec-%stringiteratorprototype%-object"><a href="https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%-object">%StringIteratorPrototype%</a></emu-xref> intrinsic object. String Iterator instances are initially created with the internal slots listed in  <emu-xref href="#table-46" id="_ref_1"><a href="#table-46">Table 1</a></emu-xref>.</p>
-	<emu-table id="table-46" caption="Internal Slots of String Iterator Instances"><figure><figcaption>Table 1: Internal Slots of String Iterator Instances</figcaption>
-		<table>
-			<tbody>
-			<tr>
-				<th>
-					Internal Slot
-				
-				</th>
-				<th>
-					Description
-				
-				</th>
-			</tr>
-			<tr>
-				<td>
-					[[IteratedString]]
-				
-				</td>
-				<td>
-					The String value whose elements are being iterated.
-				
-				</td>
-			</tr>
-			<tr>
-				<td>
-					[[StringIteratorNextIndex]]
-				
-				</td>
-				<td>
-					The integer index of the next string index to be examined by this iteration.
-				
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<ins>[[StringIterationKind]]</ins>
-				</td>
-				<td>
-					<ins>A String value that identifies what is to be returned for each element of the iteration. The possible values are: <code>"char"</code>, <code>"codepoint"</code>.</ins>
-				</td>
-			</tr>
-			</tbody>
-		</table>
-	</figure></emu-table>
+<!-- es6num="21.1.5" -->
+<emu-clause id="sec-string-iterator-objects">
+	<h1><span class="secnum">2</span>String Iterator Objects</h1>
+
+	<!-- es6num="21.1.5.1" -->
+	<emu-clause id="sec-createstringiterator" aoid="CreateStringIterator">
+		<h1><span class="secnum">2.1</span>CreateStringIterator ( <var>string</var>,  <ins><var>kind</var></ins> )</h1>
+		<p>Several methods of String objects return Iterator objects. The abstract operation CreateStringIterator with argument <var>string</var> is used to create such iterator objects. It performs the following steps:</p>
+		<emu-alg><ol><li>Assert: <emu-xref aoid="Type" id="_ref_8"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>string</var>) is String.</li><li>Let <var>iterator</var> be <emu-xref aoid="ObjectCreate" id="_ref_9"><a href="https://tc39.github.io/ecma262/#sec-objectcreate">ObjectCreate</a></emu-xref>(<emu-xref href="#sec-%stringiteratorprototype%-object" id="_ref_10"><a href="#sec-%stringiteratorprototype%-object">%StringIteratorPrototype%</a></emu-xref>, « [[IteratedString]], [[StringIteratorNextIndex]] »).</li><li>Set <var>iterator</var>.[[IteratedString]] to <var>string</var>.</li><li>Set <var>iterator</var>.[[StringIteratorNextIndex]] to 0.</li><li><ins>Set <var>iterator</var>.[[StringIterationKind]] to <var>kind</var>.</ins></li><li>Return <var>iterator</var>.
+		</li></ol></emu-alg>
+	</emu-clause>
+
+	<!-- es6num="21.1.5.2" -->
+	<emu-clause id="sec-%stringiteratorprototype%-object">
+		<h1><span class="secnum">2.2</span>The %StringIteratorPrototype% Object</h1>
+
+		<!-- es6num="21.1.5.2.1" -->
+		<emu-clause id="sec-%stringiteratorprototype%.next">
+			<h1><span class="secnum">2.2.1</span>%StringIteratorPrototype%.next ( )</h1>
+			<emu-alg><ol><li>Let <var>O</var> be the <emu-val>this</emu-val> value.</li><li>If <emu-xref aoid="Type" id="_ref_11"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>O</var>) is not Object, throw a <emu-val>TypeError</emu-val> exception.</li><li>If <var>O</var> does not have all of the internal slots of a String Iterator Instance (<emu-xref href="#sec-properties-of-string-iterator-instances" id="_ref_0"><a href="#sec-properties-of-string-iterator-instances">2.3</a></emu-xref>), throw a <emu-val>TypeError</emu-val> exception.</li><li>Let <var>s</var> be <var>O</var>.[[IteratedString]].</li><li>If <var>s</var> is <emu-val>undefined</emu-val>, return <emu-xref aoid="CreateIterResultObject" id="_ref_12"><a href="https://tc39.github.io/ecma262/#sec-createiterresultobject">CreateIterResultObject</a></emu-xref>(<emu-val>undefined</emu-val>, <emu-val>true</emu-val>).</li><li>Let <var>position</var> be <var>O</var>.[[StringIteratorNextIndex]].</li><li>Let <var>len</var> be the length of <var>s</var>.</li><li>If <var>position</var> ≥ <var>len</var>, then<ol><li>Set <var>O</var>.[[IteratedString]] to <emu-val>undefined</emu-val>.</li><li>Return <emu-xref aoid="CreateIterResultObject" id="_ref_13"><a href="https://tc39.github.io/ecma262/#sec-createiterresultobject">CreateIterResultObject</a></emu-xref>(<emu-val>undefined</emu-val>, <emu-val>true</emu-val>).</li></ol></li><li><ins>Let <var>itemKind</var> be <var>O</var>.[[StringIterationKind]].</ins></li><li>Let <var>first</var> be the numeric value of the code unit at index <var>position</var> within <var>s</var>.</li><li><del>If <var>first</var> &lt; 0xD800 or <var>first</var> &gt; 0xDBFF or <var>position</var>+1 = <var>len</var>, let <var>resultString</var> be the String value consisting of the single code unit <var>first</var>.</del></li><li><ins>If <var>first</var> ≥ 0xD800 and <var>first</var> ≤ 0xDBFF and <var>position</var>+1 &lt; <var>len</var>, then<ol><li>Let <var>second</var> be the numeric value of the code unit at index <var>position</var>+1 within the String <var>S</var>.</li><li><del>If <var>second</var> &lt; 0xDC00 or <var>second</var> &gt; 0xDFFF, let <var>resultString</var> be the String value consisting of the single code unit <var>first</var>.</del></li><li><del>Else, let <var>resultString</var> be the string-concatenation of the code unit <var>first</var> and the code unit <var>second</var>.</del></li><li><ins>If <var>second</var> ≥ 0xDC00 and <var>second</var> ≤ 0xDFFF, then</ins><ol><li><ins>Set <var>O</var>.[[StringIteratorNextIndex]] to <var>position</var> + 2.</ins></li><li><ins>If <var>itemKind</var> is <code>"char"</code>, let <var>result</var> be the string-concatenation of the code unit <var>first</var> and the code unit <var>second</var>.</ins></li><li><ins>Else,</ins><ol><li><ins>Assert: <var>itemKind</var> is <code>"codepoint"</code>.</ins></li><li><ins>Let <var>result</var> be <emu-xref aoid="UTF16Decode" id="_ref_14"><a href="https://tc39.github.io/ecma262/#sec-utf16decode">UTF16Decode</a></emu-xref>(<var>first</var>, <var>second</var>).</ins></li></ol></li><li><ins>Return <emu-xref aoid="CreateIterResultObject" id="_ref_15"><a href="https://tc39.github.io/ecma262/#sec-createiterresultobject">CreateIterResultObject</a></emu-xref>(<var>result</var>, <emu-val>false</emu-val>).</ins></li></ol></li></ol></ins></li><li><del>Let <var>resultSize</var> be the number of code units in <var>resultString</var>.</del></li><li><del>Set <var>O</var>.[[StringIteratorNextIndex]] to <var>position</var> + <var>resultSize</var>.</del></li><li><ins>Set <var>O</var>.[[StringIteratorNextIndex]] to <var>position</var> + 1.</ins></li><li><ins>If <var>itemKind</var> is <code>"char"</code>, let <var>result</var> be the String value consisting of the single code unit <var>first</var>.</ins></li><li><ins>Else,</ins><ol><li><ins>Assert: <var>itemKind</var> is <code>"codepoint"</code>.</ins></li><li><ins>Let <var>result</var> be <var>first</var>.</ins></li></ol></li><li><ins>Return <emu-xref aoid="CreateIterResultObject" id="_ref_16"><a href="https://tc39.github.io/ecma262/#sec-createiterresultobject">CreateIterResultObject</a></emu-xref>(<del><var>resultString</var></del><ins><var>result</var></ins>, <emu-val>false</emu-val>).</ins>
+			</li></ol></emu-alg>
+		</emu-clause>
+	</emu-clause>
+
+	<!-- es6num="21.1.5.3" -->
+	<emu-clause id="sec-properties-of-string-iterator-instances">
+		<h1><span class="secnum">2.3</span>Properties of String Iterator Instances</h1>
+		<p>String Iterator instances are ordinary objects that inherit properties from the <emu-xref href="#sec-%stringiteratorprototype%-object" id="_ref_17"><a href="#sec-%stringiteratorprototype%-object">%StringIteratorPrototype%</a></emu-xref> intrinsic object. String Iterator instances are initially created with the internal slots listed in  <emu-xref href="#table-46" id="_ref_1"><a href="#table-46">Table 1</a></emu-xref>.</p>
+		<emu-table id="table-46" caption="Internal Slots of String Iterator Instances"><figure><figcaption>Table 1: Internal Slots of String Iterator Instances</figcaption>
+			<table>
+				<tbody>
+				<tr>
+					<th>
+						Internal Slot
+					
+					</th>
+					<th>
+						Description
+					
+					</th>
+				</tr>
+				<tr>
+					<td>
+						[[IteratedString]]
+					
+					</td>
+					<td>
+						The String value whose elements are being iterated.
+					
+					</td>
+				</tr>
+				<tr>
+					<td>
+						[[StringIteratorNextIndex]]
+					
+					</td>
+					<td>
+						The integer index of the next string index to be examined by this iteration.
+					
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<ins>[[StringIterationKind]]</ins>
+					</td>
+					<td>
+						<ins>A String value that identifies what is to be returned for each element of the iteration. The possible values are: <code>"char"</code>, <code>"codepoint"</code>.</ins>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</figure></emu-table>
+	</emu-clause>
 </emu-clause><emu-annex id="sec-copyright-and-software-license">
       <h1><span class="secnum">A</span>Copyright &amp; Software License</h1>
       
@@ -1879,6 +1907,4 @@ li.menu-search-result-term:before {
 <p>THIS SOFTWARE IS PROVIDED BY THE ECMA INTERNATIONAL "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL ECMA INTERNATIONAL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
 
     </emu-annex>
-
-
 </div></body>
