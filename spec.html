@@ -1,0 +1,109 @@
+<pre class="metadata">
+title: String.prototype.codePoints
+stage: 0
+contributors: Ingvar Stepanyan
+</pre>
+
+<ins class="block">
+<emu-clause id="sec-string.prototype-codepoints">
+		<h1>String.prototype.codePoints ( )</h1>
+		<p>When the `codePoints` method is called it returns an Iterator object (<emu-xref href="#sec-iterator-interface"></emu-xref>) that iterates over the code points of a String value, returning each code point as a Number value. The following steps are taken:</p>
+		<emu-alg>
+			1. Let _O_ be ? RequireObjectCoercible(*this* value).
+			1. Let _S_ be ? ToString(_O_).
+			1. Return CreateStringIterator(_S_, <ins>"codepoint"</ins>).
+		</emu-alg>
+</emu-clause>
+</ins>
+
+<emu-clause id="sec-createstringiterator" aoid="CreateStringIterator">
+	<h1>CreateStringIterator ( _string_, <ins>_kind_</ins> )</h1>
+	<p>Several methods of String objects return Iterator objects. The abstract operation CreateStringIterator with argument _string_ is used to create such iterator objects. It performs the following steps:</p>
+	<emu-alg>
+		1. Assert: Type(_string_) is String.
+		1. Let _iterator_ be ObjectCreate(%StringIteratorPrototype%, &laquo; [[IteratedString]], [[StringIteratorNextIndex]] &raquo;).
+		1. Set _iterator_.[[IteratedString]] to _string_.
+		1. Set _iterator_.[[StringIteratorNextIndex]] to 0.
+		1. <ins>Set _iterator_.[[StringIterationKind]] to _kind_.</ins>
+		1. Return _iterator_.
+	</emu-alg>
+</emu-clause>
+
+<emu-clause id="sec-%stringiteratorprototype%.next">
+	<h1>%StringIteratorPrototype%.next ( )</h1>
+	<emu-alg>
+		1. Let _O_ be the *this* value.
+		1. If Type(_O_) is not Object, throw a *TypeError* exception.
+		1. If _O_ does not have all of the internal slots of a String Iterator Instance (<emu-xref href="#sec-properties-of-string-iterator-instances"></emu-xref>), throw a *TypeError* exception.
+		1. Let _s_ be _O_.[[IteratedString]].
+		1. If _s_ is *undefined*, return CreateIterResultObject(*undefined*, *true*).
+		1. Let _position_ be _O_.[[StringIteratorNextIndex]].
+		1. Let _len_ be the length of _s_.
+		1. If _position_ &ge; _len_, then
+			1. Set _O_.[[IteratedString]] to *undefined*.
+			1. Return CreateIterResultObject(*undefined*, *true*).
+		1. Let _first_ be the numeric value of the code unit at index _position_ within _s_.
+		1. <ins>Let _resultSize_ be 1.</ins>
+		1. <del>If _first_ &lt; 0xD800 or _first_ &gt; 0xDBFF or _position_+1 = _len_, let _resultString_ be the String value consisting of the single code unit _first_.</del>
+		1. <ins>If _first_ &lt; 0xD800 or _first_ &gt; 0xDBFF or _position_+1 = _len_, let _resultCp_ be _first_.</ins>
+		1. Else,
+			1. Let _second_ be the numeric value of the code unit at index _position_+1 within the String _S_.
+			1. <del>If _second_ &lt; 0xDC00 or _second_ &gt; 0xDFFF, let _resultString_ be the String value consisting of the single code unit _first_.</del>
+			1. <ins>If _second_ &lt; 0xDC00 or _second_ &gt; 0xDFFF, let _resultCp_ be _first_.</ins>
+			1. <del>Else, let _resultString_ be the string-concatenation of the code unit _first_ and the code unit _second_.</del>
+			1. <ins>Else, let _resultCp_ be UTF16Decode(_first_, _second_) and let _resultSize_ be 2.</ins>
+		1. <del>Let _resultSize_ be the number of code units in _resultString_.</del>
+		1. Set _O_.[[StringIteratorNextIndex]] to _position_ + _resultSize_.
+		1. <ins>Let _itemKind_ be _O_.[[StringIterationKind]].</ins>
+		1. <ins>If _itemKind_ is `"char"`, let _result_ be _resultCp_.</ins>
+		1. <ins>Else,</ins>
+			1. <ins>Assert: _itemKind_ is `"codepoint"`.</ins>
+			1. <ins>Let _result_ be the String value consisting of the UTF16Encoding of _resultCp_.</ins>
+		1. <ins>Return CreateIterResultObject(<del>_resultString_</del><ins>_result_</ins>, *false*).</ins>
+	</emu-alg>
+</emu-clause>
+
+<emu-clause id="sec-properties-of-string-iterator-instances">
+	<h1>Properties of String Iterator Instances</h1>
+	<p>String Iterator instances are ordinary objects that inherit properties from the %StringIteratorPrototype% intrinsic object. String Iterator instances are initially created with the internal slots listed in <emu-xref href="#table-46"></emu-xref>.</p>
+	<emu-table id="table-46" caption="Internal Slots of String Iterator Instances">
+		<table>
+			<tbody>
+			<tr>
+				<th>
+					Internal Slot
+				</th>
+				<th>
+					Description
+				</th>
+			</tr>
+			<tr>
+				<td>
+					[[IteratedString]]
+				</td>
+				<td>
+					The String value whose elements are being iterated.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					[[StringIteratorNextIndex]]
+				</td>
+				<td>
+					The integer index of the next string index to be examined by this iteration.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<ins>[[StringIterationKind]]</ins>
+				</td>
+				<td>
+					<ins>A String value that identifies what is to be returned for each element of the iteration. The possible values are: `"char"`, `"codepoint"`.</ins>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</emu-table>
+</emu-clause>
+</emu-clause>
+</emu-clause>
