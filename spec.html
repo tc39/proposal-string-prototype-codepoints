@@ -81,7 +81,7 @@ contributors: Ingvar Stepanyan
 						1. <ins>Set _O_.[[StringIteratorNextIndex]] to _position_ + 2.</ins>
 						1. <ins>If _itemKind_ is `"char"`, let _result_ be the string-concatenation of the code unit _first_ and the code unit _second_.
 						1. <ins>Else,</ins>
-							1. <ins>Assert: _itemKind_ is `"codepoint"`.</ins>
+							1. <ins>Assert: _itemKind_ is `"codePoint"`.</ins>
 							1. <ins>Let _result_ be UTF16Decode(_first_, _second_).</ins>
 						1. <ins>Return CreateIterResultObject(_result_, *false*).</ins>
 				1. <del>Let _resultSize_ be the number of code units in _resultString_.</del>
@@ -132,7 +132,7 @@ contributors: Ingvar Stepanyan
 						<ins>[[StringIterationKind]]</ins>
 					</td>
 					<td>
-						<ins>A String value that identifies what is to be returned for each element of the iteration. The possible values are: `"char"`, `"codepoint"`.</ins>
+						<ins>A String value that identifies what is to be returned for each element of the iteration. The possible values are: `"char"`, `"codePoint"`.</ins>
 					</td>
 				</tr>
 				</tbody>
