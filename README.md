@@ -4,7 +4,7 @@ ECMAScript proposal for String.prototype.codePoints
 
 ## Status
 
-The proposal is in stage 0 of [the TC39 process](https://tc39.github.io/process-document/).
+The proposal is in stage 1 of [the TC39 process](https://tc39.github.io/process-document/).
 
 ## Motivation
 
