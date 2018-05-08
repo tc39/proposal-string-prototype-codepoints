@@ -11,7 +11,7 @@
   "author": "Ingvar Stepanyan <me@rreverser.com> (https://rreverser.com/)",
   "license": "MIT",
   "devDependencies": {
-    "ecmarkup": "^3.12.0",
+    "ecmarkup": "^3.13.0",
     "husky": "^0.14.3"
   }
 }
