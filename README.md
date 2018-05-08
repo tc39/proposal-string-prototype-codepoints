@@ -33,20 +33,20 @@ The name and casing of `codePoints` was chosen to be consistent with existing `c
 
 ```javascript
 function isIdent(input) {
-	let codePoints = input.codePoints();
-	let first = codePoints.next();
+    let codePoints = input.codePoints();
+    let first = codePoints.next();
 
-	if (first.done || !isIdentifierStart(first.value.codePoint)) {
-		return false;
-	}
+    if (first.done || !isIdentifierStart(first.value.codePoint)) {
+        return false;
+    }
 
-	for (let { codePoint } of codePoints) {
-		if (!isIdentifierContinue(cp)) {
-			return false;
-		}
-	}
+    for (let { codePoint } of codePoints) {
+        if (!isIdentifierContinue(cp)) {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
 ```
 
@@ -54,52 +54,52 @@ function isIdent(input) {
 
 ```javascript
 function toDigit(cp) {
-	return cp - /* '0' */ 48;
+    return cp - /* '0' */ 48;
 }
 
 // Generic helper
 class LookaheadIterator {
-	constructor(inner) {
-		this[Symbol.iterator] = this;
-		this.inner = inner;
-		this.next();
-	}
+    constructor(inner) {
+        this[Symbol.iterator] = this;
+        this.inner = inner;
+        this.next();
+    }
 
-	next() {
-		let next = this.lookahead;
-		this.lookahead = this.inner.next();
-		return next;
-	}
+    next() {
+        let next = this.lookahead;
+        this.lookahead = this.inner.next();
+        return next;
+    }
 
-	skipWhile(cond) {
-		while (!this.lookahead.done && cond(this.lookahead.value)) {
-			this.next();
-		}
-		return this.lookahead;
-	}
+    skipWhile(cond) {
+        while (!this.lookahead.done && cond(this.lookahead.value)) {
+            this.next();
+        }
+        return this.lookahead;
+    }
 }
 
-// Main tokeniser.
+// Main tokeniser
 function* tokenise(input) {
-	let iter = new LookaheadIterator(input.codePoints());
+    let iter = new LookaheadIterator(input.codePoints());
 
-	for (let { position: start, codePoint } of iter) {
-		if (isIdentifierStart(codePoint)) {
-			yield {
-				type: 'Identifier',
-				start,
-				end: iter.skipWhile(item => isIdentifierContinue(item.codePoint)).position
-			};
-		} else if (isDigit(codePoint)) {
-			yield {
-				type: 'Number',
-				start,
-				end: iter.skipWhile(item => isDigit(item.codePoint)).position
-			};
-		} else {
-			throw new SyntaxError(`Expected an identifier or digit at ${start}`);
-		}
-	}
+    for (let { position: start, codePoint } of iter) {
+        if (isIdentifierStart(codePoint)) {
+            yield {
+                type: 'Identifier',
+                start,
+                end: iter.skipWhile(item => isIdentifierContinue(item.codePoint)).position
+            };
+        } else if (isDigit(codePoint)) {
+            yield {
+                type: 'Number',
+                start,
+                end: iter.skipWhile(item => isDigit(item.codePoint)).position
+            };
+        } else {
+            throw new SyntaxError(`Expected an identifier or digit at ${start}`);
+        }
+    }
 }
 ```
 
