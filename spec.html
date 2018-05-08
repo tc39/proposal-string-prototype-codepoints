@@ -1,6 +1,6 @@
 <pre class="metadata">
 title: String.prototype.codePoints
-stage: 0
+stage: 1
 contributors: Ingvar Stepanyan
 </pre>
 
@@ -67,9 +67,16 @@ contributors: Ingvar Stepanyan
 				1. If _s_ is *undefined*, return CreateIterResultObject(*undefined*, *true*).
 				1. Let _position_ be _O_.[[StringIteratorNextIndex]].
 				1. Let _len_ be the length of _s_.
-				1. If _position_ &ge; _len_, then
+				1. If _position_ <del>&ge;</del> <ins>==</ins> _len_, then
 					1. Set _O_.[[IteratedString]] to *undefined*.
-					1. Return CreateIterResultObject(*undefined*, *true*).
+					1. <ins>If _itemKind_ is `"char"`, let _result_ be *undefined*.</ins>
+					1. <ins>Else,</ins>
+						1. <ins>Assert: _itemKind_ is `"codePoint"`.</ins>
+						1. <ins>Let _result_ be ObjectCreate(%ObjectPrototype%).</ins>
+						1. <ins>Perform CreateDataProperty(_result_, `"position"`, _len_).</ins>
+						1. <ins>Perform CreateDataProperty(_result_, `"codePoint"`, *undefined*).</ins>
+					1. <del>Return CreateIterResultObject(*undefined*, *true*)</del>.
+					1. <ins>Return CreateIterResultObject(_result_, *true*)</ins>.
 				1. <ins>Let _itemKind_ be _O_.[[StringIterationKind]].</ins>
 				1. Let _first_ be the numeric value of the code unit at index _position_ within _s_.
 				1. <del>If _first_ &lt; 0xD800 or _first_ &gt; 0xDBFF or _position_+1 = _len_, let _resultString_ be the String value consisting of the single code unit _first_.</del>
@@ -82,7 +89,10 @@ contributors: Ingvar Stepanyan
 						1. <ins>If _itemKind_ is `"char"`, let _result_ be the string-concatenation of the code unit _first_ and the code unit _second_.
 						1. <ins>Else,</ins>
 							1. <ins>Assert: _itemKind_ is `"codePoint"`.</ins>
-							1. <ins>Let _result_ be UTF16Decode(_first_, _second_).</ins>
+							1. <ins>Let _resultCp_ be UTF16Decode(_first_, _second_).</ins>
+							1. <ins>Let _result_ be ObjectCreate(%ObjectPrototype%).</ins>
+							1. <ins>Perform CreateDataProperty(_result_, `"position"`, _position_).</ins>
+							1. <ins>Perform CreateDataProperty(_result_, `"codePoint"`, _resultCp_).</ins>
 						1. <ins>Return CreateIterResultObject(_result_, *false*).</ins>
 				1. <del>Let _resultSize_ be the number of code units in _resultString_.</del>
 				1. <del>Set _O_.[[StringIteratorNextIndex]] to _position_ + _resultSize_.</del>
@@ -90,7 +100,9 @@ contributors: Ingvar Stepanyan
 				1. <ins>If _itemKind_ is `"char"`, let _result_ be the String value consisting of the single code unit _first_.
 				1. <ins>Else,</ins>
 					1. <ins>Assert: _itemKind_ is `"codepoint"`.</ins>
-					1. <ins>Let _result_ be _first_.</ins>
+					1. <ins>Let _result_ be ObjectCreate(%ObjectPrototype%).</ins>
+					1. <ins>Perform CreateDataProperty(_result_, `"position"`, _position_).</ins>
+					1. <ins>Perform CreateDataProperty(_result_, `"codePoint"`, _first_).</ins>
 				1. <ins>Return CreateIterResultObject(<del>_resultString_</del><ins>_result_</ins>, *false*).</ins>
 			</emu-alg>
 		</emu-clause>

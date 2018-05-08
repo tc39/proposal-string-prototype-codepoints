@@ -13,15 +13,15 @@ to be able to tokenise a string into separate code points before handling them w
 
 Currently language APIs provide two ways to access entire code points:
 
-1. `codePointAt` allows to retrieve a code point at a known position. The issue is that position is usually unknown in advance if you're just iterating over the string, and you need to manually
-calculate it on each iteration with a manual `for(;;)` loop and a magically looking expression like
-`pos += currentCodePoint <= 0xFFFF ? 1 : 2`.
-1. `String.prototype[Symbol.iterator]` which allows a hassle-free iteration over string codepoints,
-but yields their string values, which are inefficient to work with in performance-critical lexers.
+1.  `codePointAt` allows to retrieve a code point at a known position. The issue is that position is usually unknown in advance if you're just iterating over the string, and you need to manually
+    calculate it on each iteration with a manual `for(;;)` loop and a magically looking expression like
+    `pos += currentCodePoint <= 0xFFFF ? 1 : 2`.
+1.  `String.prototype[Symbol.iterator]` which allows a hassle-free iteration over string codepoints,
+    but yields their string values, which are inefficient to work with in performance-critical lexers, and still lack position information.
 
 ## Proposed solution
 
-We propose the addition of a `codePoints()` method functionally similar to the `[@@iterator]`, but yielding numerical values of code points instead of string ones, this way combining the benefits of both approaches presented above while avoiding the related pitfalls in consumer code.
+We propose the addition of a `codePoints()` method functionally similar to the `[@@iterator]`, but yielding positions and numerical values of code points instead of just string values, this way combining the benefits of both approaches presented above while avoiding the related pitfalls in consumer code.
 
 ## Naming
 
@@ -36,11 +36,11 @@ function isIdent(input) {
 	let codePoints = input.codePoints();
 	let first = codePoints.next();
 
-	if (first.done || !isIdentifierStart(first.value)) {
+	if (first.done || !isIdentifierStart(first.value.codePoint)) {
 		return false;
 	}
 
-	for (let cp of codePoints) {
+	for (let { codePoint } of codePoints) {
 		if (!isIdentifierContinue(cp)) {
 			return false;
 		}
@@ -50,41 +50,54 @@ function isIdent(input) {
 }
 ```
 
-### Tokenise a string with a state machine
+### Full-blown tokeniser
 
 ```javascript
 function toDigit(cp) {
 	return cp - /* '0' */ 48;
 }
 
-function *tokenise(input) {
-	let token = {};
+// Generic helper
+class LookaheadIterator {
+	constructor(inner) {
+		this[Symbol.iterator] = this;
+		this.inner = inner;
+		this.next();
+	}
 
-	for (let cp of input) {
-		let pos = /* see open question #1, we still need to know a pos somehow */;
+	next() {
+		let next = this.lookahead;
+		this.lookahead = this.inner.next();
+		return next;
+	}
 
-		if (token.type === 'Identifier') {
-			if (isIdentifierContinue(cp)) {
-				continue;
-			}
-			token.end = pos;
-			token.name = input.slice(token.start, token.end);
-			yield token;
-		} else if (token.type === 'Number') {
-			if (isDigit(cp)) {
-				token.value = token.value * 10 + toDigit(cp);
-				continue;
-			}
-			token.end = pos;
-			yield token;
+	skipWhile(cond) {
+		while (!this.lookahead.done && cond(this.lookahead.value)) {
+			this.next();
 		}
+		return this.lookahead;
+	}
+}
 
-		if (isIdentifierStart(cp)) {
-			token = { type: 'Identifier', start: pos };
-		} else if (isDigit(cp)) {
-			token = { type: 'Number', start: pos, value: toDigit(cp) };
+// Main tokeniser.
+function* tokenise(input) {
+	let iter = new LookaheadIterator(input.codePoints());
+
+	for (let { position: start, codePoint } of iter) {
+		if (isIdentifierStart(codePoint)) {
+			yield {
+				type: 'Identifier',
+				start,
+				end: iter.skipWhile(item => isIdentifierContinue(item.codePoint)).position
+			};
+		} else if (isDigit(codePoint)) {
+			yield {
+				type: 'Number',
+				start,
+				end: iter.skipWhile(item => isDigit(item.codePoint)).position
+			};
 		} else {
-			throw new SyntaxError(`Expected an identifier or digit at ${tokenStart}`);
+			throw new SyntaxError(`Expected an identifier or digit at ${start}`);
 		}
 	}
 }
@@ -93,7 +106,3 @@ function *tokenise(input) {
 ## Specification
 
 You can view the rendered spec [here](https://rreverser.github.io/string-prototype-codepoints/).
-
-## Open questions
-
-1. [Should the API yield `[position, codePoint]` pairs like `entries` API of standard collections?](https://github.com/RReverser/string-prototype-codepoints/issues/1)
