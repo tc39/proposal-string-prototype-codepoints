@@ -15,7 +15,7 @@ contributors: Ingvar Stepanyan
 		<emu-alg>
 			1. Let _O_ be ? RequireObjectCoercible(*this* value).
 			1. Let _S_ be ? ToString(_O_).
-			1. Return CreateStringIterator(_S_, <ins>`"char"`</ins>).
+			1. Return CreateStringIterator(_S_, <ins>`"symbol"`</ins>).
 		</emu-alg>
 		<p>The value of the `name` property of this function is `"[Symbol.iterator]"`.</p>
 	</emu-clause>
@@ -69,7 +69,7 @@ contributors: Ingvar Stepanyan
 				1. Let _len_ be the length of _s_.
 				1. If _position_ <del>&ge;</del> <ins>==</ins> _len_, then
 					1. Set _O_.[[IteratedString]] to *undefined*.
-					1. <ins>If _itemKind_ is `"char"`, let _result_ be *undefined*.</ins>
+					1. <ins>If _itemKind_ is `"symbol"`, let _result_ be *undefined*.</ins>
 					1. <ins>Else,</ins>
 						1. <ins>Assert: _itemKind_ is `"codePoint"`.</ins>
 						1. <ins>Let _result_ be ObjectCreate(%ObjectPrototype%).</ins>
@@ -86,7 +86,7 @@ contributors: Ingvar Stepanyan
 					1. <del>Else, let _resultString_ be the string-concatenation of the code unit _first_ and the code unit _second_.</del>
 					1. <ins>If _second_ &ge; 0xDC00 and _second_ &le; 0xDFFF, then</ins>
 						1. <ins>Set _O_.[[StringIteratorNextIndex]] to _position_ + 2.</ins>
-						1. <ins>If _itemKind_ is `"char"`, let _result_ be the string-concatenation of the code unit _first_ and the code unit _second_.
+						1. <ins>If _itemKind_ is `"symbol"`, let _result_ be the string-concatenation of the code unit _first_ and the code unit _second_.
 						1. <ins>Else,</ins>
 							1. <ins>Assert: _itemKind_ is `"codePoint"`.</ins>
 							1. <ins>Let _resultCp_ be UTF16Decode(_first_, _second_).</ins>
@@ -97,7 +97,7 @@ contributors: Ingvar Stepanyan
 				1. <del>Let _resultSize_ be the number of code units in _resultString_.</del>
 				1. <del>Set _O_.[[StringIteratorNextIndex]] to _position_ + _resultSize_.</del>
 				1. <ins>Set _O_.[[StringIteratorNextIndex]] to _position_ + 1.</ins>
-				1. <ins>If _itemKind_ is `"char"`, let _result_ be the String value consisting of the single code unit _first_.
+				1. <ins>If _itemKind_ is `"symbol"`, let _result_ be the String value consisting of the single code unit _first_.
 				1. <ins>Else,</ins>
 					1. <ins>Assert: _itemKind_ is `"codepoint"`.</ins>
 					1. <ins>Let _result_ be ObjectCreate(%ObjectPrototype%).</ins>
@@ -144,7 +144,7 @@ contributors: Ingvar Stepanyan
 						<ins>[[StringIterationKind]]</ins>
 					</td>
 					<td>
-						<ins>A String value that identifies what is to be returned for each element of the iteration. The possible values are: `"char"`, `"codePoint"`.</ins>
+						<ins>A String value that identifies what is to be returned for each element of the iteration. The possible values are: `"symbol"`, `"codePoint"`.</ins>
 					</td>
 				</tr>
 				</tbody>
