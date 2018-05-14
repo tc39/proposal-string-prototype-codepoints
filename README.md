@@ -105,4 +105,4 @@ function* tokenise(input) {
 
 ## Specification
 
-You can view the rendered spec [here](https://rreverser.github.io/string-prototype-codepoints/).
+You can view the rendered spec [here](https://tc39.github.io/proposal-string-prototype-codepoints/).
