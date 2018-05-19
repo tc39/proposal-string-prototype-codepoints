@@ -103,6 +103,18 @@ function* tokenise(input) {
 }
 ```
 
+## FAQ
+
+1. Why does iterator emit an object instead of an array like other key-value iterators?
+
+    `[key, value]` format is usually used for entries of collections which can be directly indexed by `key`.
+
+    Unlike those collections, strings in ECMAScript are indexed [as 16-bit units of UTF-16 text](https://tc39.github.io/ecma262/#sec-terms-and-definitions-string-value) and not code points, so emitted objects won't have consequent indices but rather positions which might be 1 or 2 16-bit units away from each other.
+
+    To make the fact that they represent different measurement units and string representations explicit, we decided on `{ position, codePoint }` object format.
+
+    See [#1](https://github.com/tc39/proposal-string-prototype-codepoints/issues/1) for more details.
+
 ## Specification
 
 You can view the rendered spec [here](https://tc39.github.io/proposal-string-prototype-codepoints/).
