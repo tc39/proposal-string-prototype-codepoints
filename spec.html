@@ -24,7 +24,7 @@ contributors: Ingvar Stepanyan
 	<!-- es6num="21.1.3.28" -->
 	<emu-clause id="sec-string.prototype-codepoints">
 			<h1>String.prototype.codePoints ( )</h1>
-			<p>When the `codePoints` method is called it returns an Iterator object (<emu-xref href="#sec-iterator-interface"></emu-xref>) that iterates over the code points of a String value, returning each code point as a Number value. The following steps are taken:</p>
+			<p>When the `codePoints` method is called it returns an Iterator object (<emu-xref href="#sec-iterator-interface"></emu-xref>) that iterates over the code points of a String value, returning a descriptor consisting of position within a string and code point itself as a Number value. The following steps are taken:</p>
 			<emu-alg>
 				1. Let _O_ be ? RequireObjectCoercible(*this* value).
 				1. Let _S_ be ? ToString(_O_).
