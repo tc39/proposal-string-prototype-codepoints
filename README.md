@@ -72,10 +72,12 @@ class LookaheadIterator {
     }
 
     skipWhile(cond) {
-        while (!this.lookahead.done && cond(this.lookahead.value)) {
+        while (!this.lookahead.done && cond(this.lookahead.value.codePoint)) {
             this.next();
         }
-        return this.lookahead;
+        // even when `done == true`, the returned `.value.position` is still valid
+        // and represents position at the end of the string
+        return this.lookahead.value.position;
     }
 }
 
@@ -88,13 +90,13 @@ function* tokenise(input) {
             yield {
                 type: 'Identifier',
                 start,
-                end: iter.skipWhile(item => isIdentifierContinue(item.codePoint)).position
+                end: iter.skipWhile(isIdentifierContinue)
             };
         } else if (isDigit(codePoint)) {
             yield {
                 type: 'Number',
                 start,
-                end: iter.skipWhile(item => isDigit(item.codePoint)).position
+                end: iter.skipWhile(isDigit)
             };
         } else {
             throw new SyntaxError(`Expected an identifier or digit at ${start}`);
