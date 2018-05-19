@@ -115,6 +115,10 @@ function* tokenise(input) {
 
     See [#1](https://github.com/tc39/proposal-string-prototype-codepoints/issues/1) for more details.
 
+1. What about iteration over different string representations - code units, grapheme clusters etc.?
+
+    These are not covered by this particular proposal, but should be easy to add as separate methods or APIs. In particular, language-specific representations are being worked on as [`Intl.Segmenter` proposal](https://github.com/tc39/proposal-intl-segmenter).
+
 ## Specification
 
 You can view the rendered spec [here](https://tc39.github.io/proposal-string-prototype-codepoints/).
