@@ -41,7 +41,7 @@ function isIdent(input) {
     }
 
     for (let { codePoint } of codePoints) {
-        if (!isIdentifierContinue(cp)) {
+        if (!isIdentifierContinue(codePoint)) {
             return false;
         }
     }
