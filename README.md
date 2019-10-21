@@ -127,4 +127,4 @@ You can view the rendered spec [here](https://tc39.github.io/proposal-string-pro
 
 ## Implementations
 
-- [core-js](https://github.com/zloirock/core-js#stringcodepoints)
+- [Polyfill](https://github.com/zloirock/core-js#stringcodepoints)
