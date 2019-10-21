@@ -124,3 +124,7 @@ function* tokenise(input) {
 ## Specification
 
 You can view the rendered spec [here](https://tc39.github.io/proposal-string-prototype-codepoints/).
+
+## Implementations
+
+- [Polyfill](https://github.com/zloirock/core-js#stringcodepoints)
