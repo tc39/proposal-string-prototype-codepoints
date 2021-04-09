@@ -1,5 +1,7 @@
 # String.prototype.codePoints
 
+![Stage 1](https://badges.aleen42.com/src/tc39_2.svg)
+
 ECMAScript proposal for String.prototype.codePoints
 
 ## Status
